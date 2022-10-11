@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Calculator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/calculator.css">
+        <link rel="stylesheet" href="static/css/queries.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,500;1,700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/2f3ec2c470.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <section class="section">
+            <div class="container container__calculator">
+<!--                <div class="history">-->
+<!--                </div>-->
+                <div class="calculator">
+                    <div class="calculator__displayer">
+                        <label id="answer" for="display" class="calculator__text calculator__previous">0</label>
+                        <input autofocus id="display" type="text" class="calculator__text calculator__display" value="0" readonly>
+                    </div>
+                    <div class="calculator__buttons">
+                        <button id="clear" class="button button--clear">C</button>
+                        <button id="del" class="button button--sign">DEL</button>
+                        <button class="button button--percent">%</button>
+                        <button class="button button--divide button--operator">/</button>
+                        <button class="button button--seven button--number">7</button>
+                        <button class="button button--eight button--number">8</button>
+                        <button class="button button--nine button--number">9</button>
+                        <button class="button button--multiply button--operator">*</button>
+                        <button class="button button--four button--number">4</button>
+                        <button class="button button--five button--number">5</button>
+                        <button class="button button--six button--number">6</button>
+                        <button class="button button--subtract button--operator">-</button>
+                        <button class="button button--one button--number">1</button>
+                        <button class="button button--two button--number">2</button>
+                        <button class="button button--three button--number">3</button>
+                        <button class="button button--zero button--number">0</button>
+                        <button class="button button--add button--operator">+</button>
+                        <button class="button button--decimal button--number">.</button>
+                        <button id="equal" class="button button--equals">=</button>
+                    </div>
+                </div>
+            </div>
+            <div id="download" class="save-button">
+                <i class="fa-solid fa-floppy-disk fa-2xl"></i>
+            </div>
+        </section>
+        <script type="module" src="app.js"></script>
+    </body>
+</html>
