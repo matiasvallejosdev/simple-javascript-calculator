@@ -5,16 +5,21 @@
 export class Calculator{
     constructor() {
         this.clear();
+        this.history = [];
     }
     // https://stackoverflow.com/questions/51381966/how-do-i-use-a-static-variable-in-es6-class
     static calculations={
         '/': (a,b) => {
-            if(a === 0 || b === 0) return 0;
+            if(a === 0 || b === 0) return '';
             return a / b;
         },
         '*': (a,b) => a*b,
         '+': (a,b) => a+b,
-        '-': (a,b) => a-b
+        '-': (a,b) => a-b,
+        '%': (a,b) => {
+            if(a === 0 || b === 0) return '';
+            return a % b;
+        }
     }
     clear(){
         this.previousOperand = '';
@@ -26,13 +31,16 @@ export class Calculator{
         this.currentOperand = this.currentOperand.slice(0, -1);
     }
     appendNumber(num){
+        if(this.currentOperand === '0') this.currentOperand = '';
         if(num === '.' && this.currentOperand.includes('.')) return;
-        this.currentOperand = this.currentOperand + num.toString();
+        this.currentOperand += num.toString();
     }
     appendOperation(operator){
         if(this.currentOperand === '') return;
         if(this.previousOperand !== ''){
+            this.operation = this._chooseOperation(operator)
             this.compute()
+            return;
         }
         this.operation = this._chooseOperation(operator);
         this.previousOperand = this.currentOperand;
@@ -41,15 +49,38 @@ export class Calculator{
     compute(){
         if(this.currentOperand === '') return;
         if(this.operation === undefined) return;
-        if(this.previousOperand === '') {
-            this.previousOperand = this.currentOperand;
-            this.currentOperand = '';
-            return;
-        }
-        this.currentOperand = this.operation(parseFloat(this.previousOperand), parseFloat(this.currentOperand)).toString();
-        this.previousOperand = '';
+        let result = this.operation(parseFloat(this.previousOperand), parseFloat(this.currentOperand)).toString();
+        this._saveHistory(result)
+        this.currentOperand = result;
         this.operation = undefined;
+        this.previousOperand = '';
         return this.currentOperand;
+    }
+
+
+    getOperation(operation){
+        let currentOperation = undefined;
+        if(operation !== undefined) {
+            currentOperation = operation;
+        } else {
+            if(this.operation === undefined) return;
+            currentOperation = this.operation
+        }
+        for (let key in Calculator.calculations) {
+            if(Calculator.calculations[key] === currentOperation) return key;
+        }
+    }
+    _saveHistory(result){
+        this.history.push(this._formatHistory(result))
+        console.log(this.history)
+    }
+    _formatHistory(result){
+        return{
+            'firstOpereand': this.previousOperand,
+            'secondOperand': this.currentOperand,
+            'operation': this.operation,
+            'result': result
+        }
     }
     _chooseOperation(operator){
         // https://www.geeksforgeeks.org/how-to-check-a-key-exists-in-javascript-object/

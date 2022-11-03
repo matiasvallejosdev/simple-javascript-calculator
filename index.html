@@ -6,6 +6,8 @@
         <title>Calculator</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/reset.css">
+        <link rel="stylesheet" href="static/css/scrollbar.css">
         <link rel="stylesheet" href="static/css/calculator.css">
         <link rel="stylesheet" href="static/css/queries.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,43 +15,75 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,500;1,700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/2f3ec2c470.js" crossorigin="anonymous"></script>
     </head>
-    <body>
-        <section class="section">
-            <div class="container container__calculator">
-<!--                <div class="history">-->
-<!--                </div>-->
-                <div class="calculator">
+    <body id="body" class="body__light">
+        <div class="root">
+            <div class="section header">
+                <h1 class="header__text">
+                    Calculator
+                </h1>
+                <p class="header__text header__text--upper header__text--smaller" style="text-transform: capitalize;">
+                    Developed by Matias Vallejos
+                </p>
+            </div>
+            <section class="section calculator">
+                <div class="calculator__container">
                     <div class="calculator__displayer">
+                        <div id="history-container" class="history history--active">
+                            <div class="history__icon"></div>
+                            <div id="history-display">
+                                <table class="history__displayer">
+                                    <tbody id="history-body" class="history__body">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <button id="history-delete" class="button button--padding button--transparent button--absolute button--small button--hide" style="left: 35px; top: 7px;">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                        <button id="history-button" class="button button--padding button--transparent button--absolute button--small" style="left: 8px; top: 7px;">
+                            <i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
+                        </button>
                         <label id="answer" for="display" class="calculator__text calculator__previous">0</label>
                         <input autofocus id="display" type="text" class="calculator__text calculator__display" value="0" readonly>
                     </div>
                     <div class="calculator__buttons">
-                        <button id="clear" class="button button--clear">C</button>
-                        <button id="del" class="button button--sign">DEL</button>
-                        <button class="button button--percent">%</button>
-                        <button class="button button--divide button--operator">/</button>
-                        <button class="button button--seven button--number">7</button>
-                        <button class="button button--eight button--number">8</button>
-                        <button class="button button--nine button--number">9</button>
-                        <button class="button button--multiply button--operator">*</button>
-                        <button class="button button--four button--number">4</button>
-                        <button class="button button--five button--number">5</button>
-                        <button class="button button--six button--number">6</button>
-                        <button class="button button--subtract button--operator">-</button>
-                        <button class="button button--one button--number">1</button>
-                        <button class="button button--two button--number">2</button>
-                        <button class="button button--three button--number">3</button>
-                        <button class="button button--zero button--number">0</button>
-                        <button class="button button--add button--operator">+</button>
-                        <button class="button button--decimal button--number">.</button>
-                        <button id="equal" class="button button--equals">=</button>
+                        <button id="clear" class="calculator__text button button--clear">C</button>
+                        <button id="del" class="calculator__text button button--sign">DEL</button>
+                        <button class="calculator__text button button--percent button--operator">%</button>
+                        <button class="calculator__text button button--divide button--operator">/</button>
+                        <button class="calculator__text button button--seven button--number">7</button>
+                        <button class="calculator__text button button--eight button--number">8</button>
+                        <button class="calculator__text button button--nine button--number">9</button>
+                        <button class="calculator__text button button--multiply button--operator">*</button>
+                        <button class="calculator__text button button--four button--number">4</button>
+                        <button class="calculator__text button button--five button--number">5</button>
+                        <button class="calculator__text button button--six button--number">6</button>
+                        <button class="calculator__text button button--subtract button--operator">-</button>
+                        <button class="calculator__text button button--one button--number">1</button>
+                        <button class="calculator__text button button--two button--number">2</button>
+                        <button class="calculator__text button button--three button--number">3</button>
+                        <button class="calculator__text button button--zero button--number">0</button>
+                        <button class="calculator__text button button--add button--operator">+</button>
+                        <button class="calculator__text button button--decimal button--number">.</button>
+                        <button id="equal" class="calculator__text button button--equals">=</button>
                     </div>
                 </div>
+            </section>
+            <div class="section navigation">
+                <button class="button button--padding button--transparent">
+                    <i id="dark" class="fa-regular fa-moon fa-sm"></i>
+                </button>
+                <button class="button button--padding button--transparent">
+                    <i class="fa-regular fa-save fa-sm"></i>
+                </button>
+                <button class="button button--padding button--transparent">
+                    <i class="fa-solid fa-share fa-sm"></i>
+                </button>
             </div>
-            <div id="download" class="save-button">
-                <i class="fa-solid fa-floppy-disk fa-2xl"></i>
-            </div>
-        </section>
+        </div>
+        <!-- How To Add JavaScript to HTML -->
+        <!-- https://www.digitalocean.com/community/tutorials/how-to-add-javascript-to-html -->
         <script type="module" src="app.js"></script>
+        <script type="text/javascript" src="./src/display.js"></script>
     </body>
 </html>
