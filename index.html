@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="--base-color: #0085ff">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +17,12 @@
     </head>
     <body id="body" class="body__light">
         <div class="root">
+            <div class="colors">
+                <div class="colors__elem colors__elem--selected" style="background-color: #0085ff"></div>
+                <div class="colors__elem" style="background-color: #00ba34"></div>
+                <div class="colors__elem" style="background-color: #e92c2c"></div>
+                <div class="colors__elem" style="background-color: #f98600"></div>
+            </div>
             <ul class="circles">
                 <li></li>
                 <li></li>
@@ -86,10 +92,7 @@
                     <i id="dark" class="fa-regular fa-moon fa-sm"></i>
                 </button>
                 <button class="button button--padding button--transparent">
-                    <i class="fa-regular fa-save fa-sm"></i>
-                </button>
-                <button class="button button--padding button--transparent">
-                    <i class="fa-solid fa-share fa-sm"></i>
+                    <i id="volume" class="fa-solid fa-volume-high fa-sm"></i>
                 </button>
             </div>
         </div>
@@ -98,8 +101,10 @@
         <script type="module" src="app.js"></script>
         <script type="module" src="./src/historic.js"></script>
         <script type="module" src="./src/buttons.js"></script>
+        <script type="module" src="./src/audio.js"></script>
         <script type="text/javascript" src="./src/typing.js"></script>
         <script type="text/javascript" src="./src/display.js"></script>
+        <script type="text/javascript" src="./src/colors.js"></script>
         <script type="text/javascript" src="./src/dark-light.js"></script>
     </body>
 </html>

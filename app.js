@@ -1,6 +1,7 @@
 import {Calculator} from "./src/calculator.js";
 import {updateHistory, displayHistory} from "./src/historic.js";
 import {buttonPressTimeout} from "./src/buttons.js";
+import {playSuccess, playClick} from "./src/audio.js";
 
 const displayCurrent = document.getElementById('display');
 const displayPrevious = document.getElementById('answer');
@@ -45,17 +46,23 @@ function updateDisplay(){
 del.addEventListener('click',() => {
     calculator.delete()
     updateDisplay()
+    playClick()
+    equal.focus()
 })
 
 clear.addEventListener('click',() => {
     calculator.clear()
     updateDisplay()
+    playClick()
     equal.focus()
 })
 
 equal.addEventListener('click',() => {
     calculator.compute();
+    playSuccess();
+    playClick()
     updateDisplay();
+    equal.focus()
 })
 
 // https://stackoverflow.com/questions/35969974/foreach-is-not-a-function-error-with-javascript-array
@@ -75,6 +82,7 @@ Array.from(operators).forEach((elem) => {
 })
 
 document.addEventListener("keyup", (event) => {
+    equal.focus()
     if(event.key === "Enter"){
         buttonPressTimeout(equal)
         calculator.compute()
@@ -86,6 +94,7 @@ document.addEventListener("keyup", (event) => {
         const button = getNumberButton(event.key)
         buttonPressTimeout(button)
         updateDisplay()
+        playClick()
     } else if(
         event.key === "+" ||
         event.key === "-" ||
@@ -97,14 +106,17 @@ document.addEventListener("keyup", (event) => {
         buttonPressTimeout(button)
         calculator.appendOperation(event.key);
         updateDisplay()
+        playClick()
     } else if(event.key === "Backspace"){
         buttonPressTimeout(del)
         calculator.delete()
         updateDisplay()
+        playClick()
     } else if(event.key === "Delete"){
         buttonPressTimeout(clear)
         calculator.clear()
         updateDisplay()
+        playClick()
     }
 });
 
