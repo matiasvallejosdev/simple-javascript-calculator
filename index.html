@@ -17,13 +17,25 @@
     </head>
     <body id="body" class="body__light">
         <div class="root">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
             <div class="section header">
                 <h1 class="header__text">
                     Calculator
                 </h1>
-                <p class="header__text header__text--upper header__text--smaller" style="text-transform: capitalize;">
-                    Developed by Matias Vallejos
-                </p>
+                <div id="header-text" class="header__text header__text--smaller typed-out" style="text-transform: capitalize;">
+                    Developed by <a class="header__link" href="https://www.linkedin.com/in/matiasvallejos/" target="_blank">Matias Vallejos</a>
+                </div>
             </div>
             <section class="section calculator">
                 <div class="calculator__container">
@@ -84,6 +96,10 @@
         <!-- How To Add JavaScript to HTML -->
         <!-- https://www.digitalocean.com/community/tutorials/how-to-add-javascript-to-html -->
         <script type="module" src="app.js"></script>
+        <script type="module" src="./src/historic.js"></script>
+        <script type="module" src="./src/buttons.js"></script>
+        <script type="text/javascript" src="./src/typing.js"></script>
         <script type="text/javascript" src="./src/display.js"></script>
+        <script type="text/javascript" src="./src/dark-light.js"></script>
     </body>
 </html>

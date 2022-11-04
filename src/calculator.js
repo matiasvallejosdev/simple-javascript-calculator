@@ -56,8 +56,6 @@ export class Calculator{
         this.previousOperand = '';
         return this.currentOperand;
     }
-
-
     getOperation(operation){
         let currentOperation = undefined;
         if(operation !== undefined) {
@@ -72,7 +70,6 @@ export class Calculator{
     }
     _saveHistory(result){
         this.history.push(this._formatHistory(result))
-        console.log(this.history)
     }
     _formatHistory(result){
         return{

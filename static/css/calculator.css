@@ -1,9 +1,10 @@
-
 *{
-    --base-color: #0085ff;
+    --base-color: #0066ff;
+    --animation-duration: .05s;
     --calculator-width: 22.5rem;
     --calculator-border: .21rem;
 }
+
 
 .root{
     display: flex;
@@ -18,10 +19,13 @@
 .body__dark{
     --font-color: #ffffff;
     --background-color: #121212;
+    --background-color-light: #001831;
     --base-light: #002149;
     --calculator-color-contrast: #121212;
-    background-color: var(--background-color);
-    transition: all ease-in-out .1s;
+    /*background-color: ;*/
+    background: #4e54c8;
+    background: linear-gradient(to left, var(--background-color), var(--background-color-light));
+    transition: all ease-in-out var(--animation-duration);
 }
 
 .body__light{
@@ -30,7 +34,7 @@
     --base-light: #002149;
     --calculator-color-contrast: #ffffff;
     background-color: var(--background-color);
-    transition: all ease-in-out .1s;
+    transition: all ease-in-out var(--animation-duration);
 }
 
 .body__mode{
@@ -45,6 +49,122 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+/* ------------ START BACKGROUND ------------- */
+
+.circles{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li{
+    z-index: -1;
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: var(--base-color);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+}
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 10px;
+    height: 10px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 5px;
+    height: 5px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 30px;
+    height: 30px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+@keyframes animate {
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: .5;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+/* ------------- END BACKGROUND ------------ */
 
 /* ------------- START HEADER ------------ */
 
@@ -62,9 +182,35 @@
     text-transform: uppercase;
 }
 
+.header__link:link, .header__link:visited {
+    text-decoration: none;
+    color: var(--base-color);
+}
+
+.header__link:hover, .header__link:active {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
 .header__text--smaller{
-    text-transform: capitalize;
-    font-size: .8rem;
+    font-size: 1rem;
+}
+
+/* https://www.sitepoint.com/css-typewriter-effect/ */
+.typed-out{
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    animation: typing 2s steps(20, end) forwards, blinking .8s infinite;
+    width: 0;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+@keyframes blinking {
+    from { border-color: transparent }
+    to { border-color: var(--base-color); }
 }
 
 /* ------------- END HEADER ------------ */
@@ -78,6 +224,7 @@
     align-items: center;
     gap: .4rem;
     margin: 0 auto;
+    z-index: 3;
 }
 
 /* ------------- END NAVIGATION ------------ */
@@ -90,7 +237,7 @@
     grid-template-rows: 25% 1fr;
     justify-content: start;
     align-items: start;
-    transition: all ease-in-out .1s;
+    transition: all ease-in-out var(--animation-duration);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -158,7 +305,7 @@
 }
 
 .history__box{
-    transition: all .1s ease-in-out;
+    transition: all var(--animation-duration) ease-in-out;
     padding: 0 .3rem;
     border-radius: 2px;
     width: auto;
@@ -254,7 +401,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--background-color);
-    transition: all .1s ease-in-out;
+    transition: all var(--animation-duration) ease-in-out;
     color: var(--font-color);
     outline: none;
     box-shadow: none;
@@ -270,6 +417,13 @@
     left: 7px;
     top: 7px;
     z-index: 4;
+}
+
+.button--pressed{
+    transition: all 0s ease-in-out;
+    background-color: var(--base-color);
+    color: var(--font-color);
+    transform: scale(106%);
 }
 
 .button--hide{
@@ -291,7 +445,7 @@
 }
 
 .button:active{
-    transform: scale(110%);
+    transform: scale(106%);
 }
 
 .button:hover{
@@ -321,7 +475,7 @@
 /* ----------- START SAVE --------------- */
 
 .save-button{
-    transition: all .1s ease-out;
+    transition: all var(--animation-duration) ease-out;
     border-radius: 50%;
     padding: 1rem;
     background-color: rgba(0,0,255, 0.1);
