@@ -1,5 +1,4 @@
 *{
-    --base-color: #0066ff;
     --animation-duration: .05s;
     --calculator-width: 22.5rem;
     --calculator-border: .21rem;
@@ -7,6 +6,7 @@
 
 
 .root{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,8 +23,7 @@
     --base-light: #002149;
     --calculator-color-contrast: #121212;
     /*background-color: ;*/
-    background: #4e54c8;
-    background: linear-gradient(to left, var(--background-color), var(--background-color-light));
+    background: var(--background-color);
     transition: all ease-in-out var(--animation-duration);
 }
 
@@ -333,6 +332,7 @@
 }
 
 .calculator__container{
+    position: relative;
     padding: 1rem;
     background-color: var(--background-color);
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
@@ -472,25 +472,38 @@
 
 /* ----------- END BUTTONS ------------ */
 
-/* ----------- START SAVE --------------- */
+/* ----------- START COLORS ------------ */
 
-.save-button{
-    transition: all var(--animation-duration) ease-out;
-    border-radius: 50%;
-    padding: 1rem;
-    background-color: rgba(0,0,255, 0.1);
-    bottom: 30px;
-    right: 30px;
+.colors{
     position: absolute;
-    width: 4rem;
-    height: 4rem;
+    left: 400px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.save-button:hover{
-    cursor: pointer;
-    background-color: var(--base-color);
+    flex-direction: column;
+    gap: 1rem;
 }
 
-/* ----------- END SAVE --------------- */
+.colors__elem{
+    transition: all var(--animation-duration) ease-in-out;
+    width: 40px;
+    height: 40px;
+    opacity: 0.3;
+    border-radius: 50%;
+    border: var(--calculator-border) solid #444;
+}
+
+.colors__elem:hover{
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(110%);
+}
+
+.colors__elem:active{
+    transform: scale(115%);
+}
+
+.colors__elem--selected{
+    transform: scale(110%);
+    opacity: 1;
+}
+
+/* ----------- END COLORS --------------- */
