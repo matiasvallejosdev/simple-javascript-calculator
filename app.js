@@ -60,7 +60,6 @@ clear.addEventListener('click',() => {
 equal.addEventListener('click',() => {
     calculator.compute();
     playSuccess();
-    playClick()
     updateDisplay();
     equal.focus()
 })
@@ -84,6 +83,7 @@ Array.from(operators).forEach((elem) => {
 document.addEventListener("keyup", (event) => {
     equal.focus()
     if(event.key === "Enter"){
+        playSuccess();
         buttonPressTimeout(equal)
         calculator.compute()
         updateDisplay()
